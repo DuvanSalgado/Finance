@@ -1,10 +1,7 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
 import {
   IonContent,
   IonHeader,
-  IonIcon,
   IonTabBar,
   IonTabButton,
   IonTabs,
@@ -16,20 +13,13 @@ import {
   templateUrl: './expenses.page.html',
   standalone: true,
   imports: [
-    IonContent,
     IonHeader,
     IonTitle,
     IonToolbar,
-    CommonModule,
-    FormsModule,
-    IonIcon,
     IonTabBar,
     IonTabButton,
-    IonTabs
+    IonTabs,
+    IonContent,
   ],
 })
-export class ExpensesPage implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
-}
+export class ExpensesPage {}
