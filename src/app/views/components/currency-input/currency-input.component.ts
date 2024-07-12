@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit, Optional, Self } from '@angular/core';
 import {
   ControlValueAccessor,
   FormControl,
-  FormsModule,
   NgControl,
+  ReactiveFormsModule,
 } from '@angular/forms';
 import { IonInput } from '@ionic/angular/standalone';
 import { MaskitoDirective } from '@maskito/angular';
@@ -25,7 +25,7 @@ import { Subscription } from 'rxjs';
     ></ion-input>
   `,
   standalone: true,
-  imports: [MaskitoDirective, FormsModule, IonInput],
+  imports: [MaskitoDirective, IonInput, ReactiveFormsModule],
 })
 export class CurrencyInputComponent
   implements ControlValueAccessor, OnInit, OnDestroy

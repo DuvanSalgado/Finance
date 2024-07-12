@@ -1,20 +1,36 @@
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
-
+import { Component, OnInit } from '@angular/core';
+import {
+  IonButton,
+  IonContent,
+  IonIcon,
+  IonLabel,
+  ModalController,
+} from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import { addOutline, heart, settingsSharp } from 'ionicons/icons';
+import { CreateExpenseComponent } from '../../components/create-expense/create-expense.component';
 @Component({
   selector: 'app-overheads',
   templateUrl: './overheads.page.html',
   styleUrls: ['./overheads.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [CommonModule, IonButton, IonContent, IonIcon, IonLabel],
 })
 export class OverheadsPage implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+  public fecha = new Date();
+  constructor(private modalCtrl: ModalController) {
+    addIcons({ addOutline, settingsSharp, heart });
   }
 
+  ngOnInit() {}
+
+  async openModal() {
+    const modal = await this.modalCtrl.create({
+      component: CreateExpenseComponent,
+    });
+    modal.present();
+
+    await modal.onWillDismiss();
+  }
 }

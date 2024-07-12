@@ -3,6 +3,11 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
+    redirectTo: 'expenses',
+    pathMatch: 'full',
+  },
+  {
+    path: '',
     loadComponent: () => import('@footer').then((c) => c.FooterComponent),
     children: [
       {
@@ -13,10 +18,5 @@ export const routes: Routes = [
           ),
       },
     ],
-  },
-  {
-    path: '',
-    redirectTo: 'expenses',
-    pathMatch: 'full',
   },
 ];

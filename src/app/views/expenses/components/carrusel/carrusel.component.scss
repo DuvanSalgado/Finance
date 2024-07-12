@@ -1,0 +1,17 @@
+.carrusel {
+  display: flex;
+  width: 100vw;
+  overflow-y: scroll;
+  scroll-snap-type: x mandatory;
+
+  .slides {
+    display: flex;
+    gap: 5px;
+    margin: 0px 16px;
+  }
+
+  .item {
+    width: 344px;
+    scroll-snap-align: start;
+  }
+}

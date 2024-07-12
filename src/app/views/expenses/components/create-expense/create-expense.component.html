@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="cancel()" class="ion-padding-start">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Agregar gasto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="myForm">
+    <currency-input formControlName="currency"></currency-input>
+    <ion-note color="danger">Selección inválida</ion-note>
+    <ion-select
+      formControlName="paymentMethods"
+      label="Medios de pago"
+      placeholder="Seleccione uno"
+      errorText="Invalid email"
+    >
+      <ion-select-option value="efectivo">Efectivo</ion-select-option>
+      <ion-select-option value="tranferencia">Transferencia</ion-select-option>
+      <ion-select-option value="rappyPay">Rappy card</ion-select-option>
+      <ion-select-option value="nu">Nu</ion-select-option>
+    </ion-select>
+    <ion-note color="danger">Selección inválida</ion-note>
+
+    <ion-select
+      formControlName="categories"
+      label="Categorias"
+      placeholder="Seleccione uno"
+    >
+      <ion-select-option value="internet">Internet</ion-select-option>
+      <ion-select-option value="servicios">Servicios</ion-select-option>
+      <ion-select-option value="vehiculo">Vehiculo</ion-select-option>
+      <ion-select-option value="gastosPersonales"
+        >Gastos personales</ion-select-option
+      >
+    </ion-select>
+
+    <ion-select
+      formControlName="type"
+      label="tipo"
+      placeholder="Seleccione uno"
+    >
+      <ion-select-option value="internetCasa">Internet casa</ion-select-option>
+      <ion-select-option value="internetClaro"
+        >Internet claro</ion-select-option
+      >
+      <ion-select-option value="internetTigo">Internet tigo</ion-select-option>
+      <ion-select-option value="paqueteInternet"
+        >Paquete Internet</ion-select-option
+      >
+    </ion-select>
+
+    <ion-textarea
+      formControlName="notes"
+      label="Notas"
+      labelPlacement="stacked"
+      placeholder="Notas"
+    ></ion-textarea>
+  </form>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button (click)="save()" slot="start" shape="round">Crear</ion-button>
+    <ion-button slot="end" shape="round">Cancelar</ion-button>
+  </ion-toolbar>
+</ion-footer>
