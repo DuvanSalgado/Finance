@@ -22,6 +22,7 @@
     "useDefineForClassFields": false,
     "paths": {
       "@footer": ["src/app/views/components/footer/footer.component"],
+      "@currencyInput": ["src/app/views/components/currency-input/currency-input.component"],
     }
   },
   "angularCompilerOptions": {

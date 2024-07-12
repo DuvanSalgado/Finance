@@ -10,7 +10,23 @@ import {
 } from '@ionic/angular/standalone';
 @Component({
   selector: 'app-expenses',
-  templateUrl: './expenses.page.html',
+  template: `
+    <ion-header [translucent]="true">
+      <ion-toolbar>
+        <ion-title>expenses</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-tabs>
+        <ion-tab-bar slot="top">
+          <ion-tab-button tab="overhead"> Generales </ion-tab-button>
+          <ion-tab-button tab="fixed"> Fijos </ion-tab-button>
+          <ion-tab-button tab="category"> Categiria </ion-tab-button>
+        </ion-tab-bar>
+      </ion-tabs>
+    </ion-content>
+  `,
   standalone: true,
   imports: [
     IonHeader,

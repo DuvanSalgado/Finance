@@ -24,7 +24,7 @@ import {
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { arrowBackOutline, lockClosed } from 'ionicons/icons';
-import { CurrencyInputComponent } from 'src/app/views/components/currency-input/currency-input.component';
+import { CurrencyInputComponent } from '@currencyInput';
 @Component({
   selector: 'app-create-expense',
   templateUrl: './create-expense.component.html',
