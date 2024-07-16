@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, Optional, Self } from '@angular/core';
+import { Component, OnInit, Optional, Self } from '@angular/core';
 import {
   ControlValueAccessor,
   FormControl,
@@ -9,7 +9,6 @@ import { IonInput } from '@ionic/angular/standalone';
 import { MaskitoDirective } from '@maskito/angular';
 import { MaskitoElementPredicate, MaskitoOptions } from '@maskito/core';
 import { maskitoNumberOptionsGenerator } from '@maskito/kit';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'currency-input',
@@ -22,16 +21,15 @@ import { Subscription } from 'rxjs';
       [maskito]="cardMask"
       inputmode="numeric"
       [maskitoElement]="maskPredicate"
+      (ionBlur)="onTouched()"
+      (ionChange)="onChange($event.detail.value)"
     ></ion-input>
   `,
   standalone: true,
   imports: [MaskitoDirective, IonInput, ReactiveFormsModule],
 })
-export class CurrencyInputComponent
-  implements ControlValueAccessor, OnInit, OnDestroy
-{
+export class CurrencyInputComponent implements ControlValueAccessor, OnInit {
   valueFormControl = new FormControl();
-  private valueChangesSubscription: Subscription | undefined;
   readonly cardMask: MaskitoOptions = maskitoNumberOptionsGenerator({
     decimalSeparator: ',',
     thousandSeparator: '.',
@@ -50,19 +48,20 @@ export class CurrencyInputComponent
     this._initializevalueFormControl();
   }
 
-  ngOnDestroy() {
-    this.valueChangesSubscription?.unsubscribe();
-  }
+  onTouched: () => void = () => {};
+  onChange: (value: any) => void = () => {};
 
   writeValue(value: string): void {
     this.valueFormControl.setValue(value);
   }
 
   registerOnChange(fn: (_: any) => void): void {
-    this._onChange = fn;
+    this.onChange = fn;
   }
 
-  registerOnTouched(fn: any): void {}
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
 
   setDisabledState?(isDisabled: boolean): void {}
 
@@ -72,12 +71,6 @@ export class CurrencyInputComponent
 
       this.valueFormControl.setValidators(control.validator || []);
       this.valueFormControl.updateValueAndValidity();
-
-      this.valueChangesSubscription?.add(
-        this.valueFormControl.valueChanges.subscribe(this._onChange)
-      );
     }
   }
-
-  private _onChange: (value: any) => void = () => {};
 }

@@ -10,7 +10,7 @@
 <ion-content class="ion-padding">
   <form [formGroup]="myForm">
     <currency-input formControlName="currency"></currency-input>
-    <ion-note color="danger">Selección inválida</ion-note>
+    <app-error-messages [formGroup]="myForm" controlName="currency" ></app-error-messages>
     <ion-select
       formControlName="paymentMethods"
       label="Medios de pago"

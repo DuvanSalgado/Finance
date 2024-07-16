@@ -25,6 +25,7 @@ import {
 import { addIcons } from 'ionicons';
 import { arrowBackOutline, lockClosed } from 'ionicons/icons';
 import { CurrencyInputComponent } from '@currencyInput';
+import { ErrorMessagesComponent } from 'src/app/views/components/error-messages/error-messages.component';
 @Component({
   selector: 'app-create-expense',
   templateUrl: './create-expense.component.html',
@@ -47,6 +48,7 @@ import { CurrencyInputComponent } from '@currencyInput';
     IonInput,
     IonButtons,
     IonIcon,
+    ErrorMessagesComponent
   ],
 })
 export class CreateExpenseComponent {
@@ -69,6 +71,6 @@ export class CreateExpenseComponent {
   }
 
   save(): void {
-    console.log(this.myForm.value);
+    console.log(this.myForm.get('currency'));
   }
 }
