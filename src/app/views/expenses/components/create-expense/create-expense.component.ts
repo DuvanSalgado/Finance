@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 
+import { CurrencyInputComponent } from '@currencyInput';
 import {
   IonButton,
   IonButtons,
@@ -24,8 +25,8 @@ import {
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { arrowBackOutline, lockClosed } from 'ionicons/icons';
-import { CurrencyInputComponent } from '@currencyInput';
-import { ErrorMessagesComponent } from 'src/app/views/components/error-messages/error-messages.component';
+import { ErrorMessagesComponent } from '@errorMessages';
+import { minCharValidator } from './validaciones';
 @Component({
   selector: 'app-create-expense',
   templateUrl: './create-expense.component.html',
@@ -52,13 +53,13 @@ import { ErrorMessagesComponent } from 'src/app/views/components/error-messages/
   ],
 })
 export class CreateExpenseComponent {
-  myForm: FormGroup;
+  createExpense: FormGroup;
 
   constructor(private modalCtrl: ModalController, private fb: FormBuilder) {
     addIcons({ arrowBackOutline, lockClosed });
 
-    this.myForm = this.fb.group({
-      currency: ['', [Validators.required, Validators.minLength(5)]],
+    this.createExpense = this.fb.group({
+      currency: ['', [Validators.required, minCharValidator(3)]],
       paymentMethods: ['', Validators.required],
       categories: ['', Validators.required],
       type: ['', Validators.required],
@@ -71,6 +72,7 @@ export class CreateExpenseComponent {
   }
 
   save(): void {
-    console.log(this.myForm.get('currency'));
+    this.createExpense.markAllAsTouched();
+    console.log(this.createExpense);
   }
 }

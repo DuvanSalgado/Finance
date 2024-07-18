@@ -9,13 +9,21 @@ import {
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { addOutline, heart, settingsSharp } from 'ionicons/icons';
+import { CarruselCompone } from '../../components/carrusel/carrusel.component';
 import { CreateExpenseComponent } from '../../components/create-expense/create-expense.component';
 @Component({
   selector: 'app-overheads',
   templateUrl: './overheads.page.html',
   styleUrls: ['./overheads.page.scss'],
   standalone: true,
-  imports: [CommonModule, IonButton, IonContent, IonIcon, IonLabel],
+  imports: [
+    CommonModule,
+    IonButton,
+    IonContent,
+    IonIcon,
+    IonLabel,
+    CarruselCompone,
+  ],
 })
 export class OverheadsPage implements OnInit {
   public fecha = new Date();

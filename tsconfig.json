@@ -23,6 +23,7 @@
     "paths": {
       "@footer": ["src/app/views/components/footer/footer.component"],
       "@currencyInput": ["src/app/views/components/currency-input/currency-input.component"],
+      "@errorMessages": ["src/app/views/components/error-messages/error-messages.component"],
     }
   },
   "angularCompilerOptions": {

@@ -8,9 +8,11 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <form [formGroup]="myForm">
+  <form [formGroup]="createExpense">
     <currency-input formControlName="currency"></currency-input>
-    <app-error-messages [formGroup]="myForm" controlName="currency" ></app-error-messages>
+    <app-error-messages
+      [control]="createExpense.get('currency')"
+    ></app-error-messages>
     <ion-select
       formControlName="paymentMethods"
       label="Medios de pago"
@@ -22,7 +24,9 @@
       <ion-select-option value="rappyPay">Rappy card</ion-select-option>
       <ion-select-option value="nu">Nu</ion-select-option>
     </ion-select>
-    <ion-note color="danger">Selección inválida</ion-note>
+    <app-error-messages
+      [control]="createExpense.get('paymentMethods')"
+    ></app-error-messages>
 
     <ion-select
       formControlName="categories"
@@ -36,7 +40,9 @@
         >Gastos personales</ion-select-option
       >
     </ion-select>
-
+    <app-error-messages
+      [control]="createExpense.get('categories')"
+    ></app-error-messages>
     <ion-select
       formControlName="type"
       label="tipo"
@@ -51,7 +57,9 @@
         >Paquete Internet</ion-select-option
       >
     </ion-select>
-
+    <app-error-messages
+      [control]="createExpense.get('type')"
+    ></app-error-messages>
     <ion-textarea
       formControlName="notes"
       label="Notas"
@@ -62,7 +70,7 @@
 </ion-content>
 <ion-footer>
   <ion-toolbar>
-    <ion-button (click)="save()" slot="start" shape="round">Crear</ion-button>
-    <ion-button slot="end" shape="round">Cancelar</ion-button>
+    <ion-button slot="start" shape="round">Cancelar</ion-button>
+    <ion-button (click)="save()" slot="end" shape="round">Crear</ion-button>
   </ion-toolbar>
 </ion-footer>

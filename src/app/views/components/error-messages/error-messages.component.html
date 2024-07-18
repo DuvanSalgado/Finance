@@ -1,4 +1,10 @@
-@if (formGroup.get(controlName)?.invalid && formGroup.get(controlName)?.touched)
-{
-<ion-note color="danger"> {{ errorMessage }} </ion-note>
+@if (control()?.invalid && (control()?.dirty || control()?.touched )) {
+
+    @if(control()?.errors?.['required']){
+    <ion-note color="danger"> Campo requerido </ion-note>
+    } 
+    
+    @if(!!control()?.errors?.['minlength']){
+        <ion-note color="danger"> Minimo {{control()?.errors?.['minlength'].requiredLength}} caracteres</ion-note>
+    }
 }
