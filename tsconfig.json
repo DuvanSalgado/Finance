@@ -21,9 +21,8 @@
     "lib": ["es2018", "dom"],
     "useDefineForClassFields": false,
     "paths": {
-      "@footer": ["src/app/views/components/footer/footer.component"],
-      "@currencyInput": ["src/app/views/components/currency-input/currency-input.component"],
-      "@errorMessages": ["src/app/views/components/error-messages/error-messages.component"],
+      "@components": ["src/app/views/components/index"],
+      "@helpers": ["src/app/helpers/index"],
     }
   },
   "angularCompilerOptions": {
@@ -31,5 +30,5 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  }
+  } 
 }

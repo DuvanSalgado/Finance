@@ -45,7 +45,7 @@ export class CurrencyInputComponent implements ControlValueAccessor, OnInit {
   }
 
   ngOnInit() {
-    this._initializevalueFormControl();
+    this.initializeValueFormControl();
   }
 
   onTouched: () => void = () => {};
@@ -65,7 +65,7 @@ export class CurrencyInputComponent implements ControlValueAccessor, OnInit {
 
   setDisabledState?(isDisabled: boolean): void {}
 
-  private _initializevalueFormControl(): void {
+  private initializeValueFormControl(): void {
     if (this.controlDir?.control) {
       const { control } = this.controlDir;
 

@@ -6,7 +6,9 @@ import {
   Validators,
 } from '@angular/forms';
 
-import { CurrencyInputComponent } from '@currencyInput';
+import { CurrencyInputComponent, ErrorMessagesComponent } from '@components';
+import { minCharValidator } from '@helpers';
+
 import {
   IonButton,
   IonButtons,
@@ -25,8 +27,7 @@ import {
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { arrowBackOutline, lockClosed } from 'ionicons/icons';
-import { ErrorMessagesComponent } from '@errorMessages';
-import { minCharValidator } from './validaciones';
+
 @Component({
   selector: 'app-create-expense',
   templateUrl: './create-expense.component.html',
@@ -49,7 +50,7 @@ import { minCharValidator } from './validaciones';
     IonInput,
     IonButtons,
     IonIcon,
-    ErrorMessagesComponent
+    ErrorMessagesComponent,
   ],
 })
 export class CreateExpenseComponent {
@@ -73,6 +74,7 @@ export class CreateExpenseComponent {
 
   save(): void {
     this.createExpense.markAllAsTouched();
+    
     console.log(this.createExpense);
   }
 }

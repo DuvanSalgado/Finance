@@ -1,0 +1,1 @@
+export { minCharValidator } from "./Validators";

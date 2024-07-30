@@ -8,7 +8,7 @@ export const routes: Routes = [
   },
   {
     path: '',
-    loadComponent: () => import('@footer').then((c) => c.FooterComponent),
+    loadComponent: () => import('@components').then((c) => c.FooterComponent),
     children: [
       {
         path: 'expenses',
